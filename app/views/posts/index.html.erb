@@ -47,7 +47,7 @@
             <%= link_to edit_post_path(post), class: "text-primary link d-flex flex-column align-items-center" do %>
               <%= icon('fa fa-pen') %>
             <% end %>
-            <%= link_to post_path(post), class: "text-primary link d-flex flex-column align-items-center", method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <%= link_to post_delete_path(post), class: "text-primary link d-flex flex-column align-items-center", method: :delete, data: { confirm: 'Are you sure?' } do %>
               <%= icon('fa fa-trash') %>
             <% end %>
           </div>

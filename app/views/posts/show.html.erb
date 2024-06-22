@@ -2,7 +2,7 @@
   <h1><%= @post.title %></h1>
   <p><%= @post.content %></p>
   <p><%= @post.creation_date.strftime("%Y-%m-%d") %></p>
-  <p><%= @post.published_date.strftime("%Y-%m-%d") %></p>
+  <p><%= @post.published_date&.strftime("%Y-%m-%d") %></p>
   
   <% if @post.image.attached? %>
     <%= image_tag @post.image, class: 'media-size' %>
@@ -11,6 +11,12 @@
   <% if @post.video.attached? %>
     <%= video_tag @post.video, controls: true, class: 'media-size video' %>
   <% end %>
+  <%= link_to edit_post_path(@post), class: "text-primary link d-flex flex-column align-items-center" do %>
+      <%= icon('fa fa-pen') %>
+    <% end %>
+    <%= link_to post_delete_path(@post), class: "text-primary link d-flex flex-column align-items-center", method: :delete, data: { confirm: 'Are you sure?' } do %>
+      <%= icon('fa fa-trash') %>
+    <% end %>
 
   <div class="comments-section">
     <h2>Comments</h2>

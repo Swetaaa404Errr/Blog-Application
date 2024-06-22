@@ -1,0 +1,38 @@
+<div class="media-container">
+  <h1><%= @post.title %></h1>
+  <p><%= @post.content %></p>
+  <p><%= @post.creation_date.strftime("%Y-%m-%d") %></p>
+  <p><%= @post.published_date.strftime("%Y-%m-%d") %></p>
+  
+  <% if @post.image.attached? %>
+    <%= image_tag @post.image, class: 'media-size' %>
+  <% end %>
+
+  <% if @post.video.attached? %>
+    <%= video_tag @post.video, controls: true, class: 'media-size video' %>
+  <% end %>
+
+  <div class="comments-section">
+    <h2>Comments</h2>
+    <%= form_with(model: [@post, Comment.new], local: true, class: "comment-form") do |form| %>
+      <div class="comment-field">
+        
+        <%= form.text_field :content %>
+      </div>
+      <div class="comment-button">
+        <%= form.submit 'Add Comment' %>
+      </div>
+    <% end %>
+
+    <% @post.comments.each do |comment| %>
+      <div class="comment-item">
+        <div class="comment-content">
+          <p><strong><%= comment.user.email %>:</strong> <%= comment.content %></p>
+        </div>
+        <% if user_signed_in? && comment.user == current_user %>
+          <%= button_to 'Delete Comment', post_comment_path(@post, comment), method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

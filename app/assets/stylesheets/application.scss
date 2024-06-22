@@ -1,0 +1,93 @@
+@import "bootstrap";
+.size {
+    width: 20%;
+    height: 400px;
+  }
+
+.center {
+    text-align: center;
+}
+
+.pad {
+    margin: 50px;
+}
+
+.media-size {
+    max-width: 100%;
+    display: block;
+    margin: 0 auto 20px; 
+  }
+  
+  .media-size img, .media-size video {
+    width: 100%;
+    height: auto;
+  }
+  
+  .media-size.video {
+    width: 100%;
+    max-height: 400px;
+  }
+  
+  .media-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .comment-form {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  
+    .comment-field {
+      flex-grow: 1;
+      margin-right: 10px;
+    }
+  
+    .comment-button {
+      flex-shrink: 0;
+    }
+  }
+  
+  .comments-section {
+    margin-top: 30px;
+  }
+  
+  .comment-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .comment-content {
+    flex-grow: 1;
+    margin-right: 10px;
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+  }
+  
+  .carousel-inner img, .carousel-inner video {
+    max-height: 200px;
+    object-fit: cover;
+  }
+  
+  .card-body.text-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .custom-links {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+  }
+  
+  

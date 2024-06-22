@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row mb-3">
+    <div class="col text-center pad">
+      <%= link_to 'New Post', new_post_path, class: 'btn btn-dark' %>
+      <%= link_to 'Your Posts', posts_path, class: 'btn btn-dark' %>
+      <%= link_to 'Your Draft Posts', draft_path, class: 'btn btn-dark' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <% @posts.each do |post| %>
+      <div class="col-md-3 mb-4">
+        <div class="card">
+          <div class="card-body text-center">
+            <h5 class="card-title"><%= post.title %></h5>
+          </div>
+          <div id="carousel<%= post.id %>" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <% if post.image.attached? %>
+                <div class="carousel-item active">
+                  <%= image_tag post.image, class: "d-block w-100" %>
+                </div>
+                <% if post.video.attached? %>
+                  <div class="carousel-item">
+                    <%= video_tag post.video, controls: true, class: "d-block w-100" %>
+                  </div>
+                <% end %>
+              <% elsif post.video.attached? %>
+                <div class="carousel-item active">
+                  <%= video_tag post.video, controls: true, class: "d-block w-100" %>
+                </div>
+              <% else %>
+                <div class="carousel-item active">
+                  <img src="https://via.placeholder.com/150" class="d-block w-100" alt="No media available">
+                </div>
+              <% end %>
+            </div>
+            <% if post.image.attached? && post.video.attached? %>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carousel<%= post.id %>" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carousel<%= post.id %>" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            <% end %>
+          </div>
+          <div class="card-body text-center">
+            <%= link_to post_path(post), class: " text-primary link d-flex flex-column align-items-center" do %>
+                  <%= icon('fa fa-eye ') %>
+                <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
